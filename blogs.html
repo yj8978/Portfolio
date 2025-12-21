@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blogs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<meta name="google-site-verification" content="La6tvcFECCjUCFLIbKxmqchhqEQMH9u2i0bM48Tnq6k" />
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+</head>
+<body>
+<nav class="navbar">
+  <div class="blog-nav-container">
+    <a href="https://yogeshjirel.com.np/" class="logo">YJ</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="https://yogeshjirel.com.np/blogs">Blogs</a></li>
+      <li><a href="https://yogeshjirel.com.np/#projects">Projects</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="blog-container">
+  <h1 class="page-title">Blogs</h1>
+  <p class="page-subtitle">
+    I overthink so much it felt unfair to keep it to myself. Consider this a shared existential crisis.
+  </p>
+
+  <div class="blog-list" id="blogList"></div>
+</div>
+
+<script>
+fetch("posts.json")
+  .then(res => res.json())
+  .then(posts => {
+    const list = document.getElementById("blogList");
+
+    posts.forEach(post => {
+      const article = document.createElement("article");
+      article.className = "blog-card";
+      article.innerHTML = `
+        <a href="blog.html?id=${post.id}">
+          <h2>${post.title}</h2>
+          <p>${post.excerpt}</p>
+          <div class="blog-meta">${post.date} · ${post.readTime}</div>
+        </a>
+      `;
+      list.appendChild(article);
+    });
+  });
+</script>
+
+</body>
+</html>
