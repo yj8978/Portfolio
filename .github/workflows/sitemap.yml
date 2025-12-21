@@ -11,31 +11,31 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+          ref: main
 
       - name: Generate sitemap
         run: |
           DOMAIN="https://yogeshjirel.com.np"
           SITEMAP="sitemap.xml"
 
-          # Start sitemap
           echo '<?xml version="1.0" encoding="UTF-8"?>' > $SITEMAP
           echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> $SITEMAP
 
-          # Add root and static pages (ignore sitemap.xml and .github folder)
           find . -name "*.html" ! -name "sitemap.xml" ! -path "./.github/*" | while read FILE; do
-            FILE_URL="${FILE#./}"                 # remove leading ./
-            FILE_URL="${FILE_URL/index.html/}"    # remove index.html
+            FILE_URL="${FILE#./}"
+            FILE_URL="${FILE_URL/index.html/}"
             echo "  <url><loc>$DOMAIN/$FILE_URL</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>" >> $SITEMAP
           done
 
-          # Add blog posts from posts.json (skip drafts if present)
           if [ -f "posts.json" ]; then
             cat posts.json | jq -r '.[] | select(.draft != true) | .id' | while read ID; do
               echo "  <url><loc>$DOMAIN/blog/$ID/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>" >> $SITEMAP
             done
           fi
 
-          # Close sitemap
           echo '</urlset>' >> $SITEMAP
           cat $SITEMAP
 
@@ -45,7 +45,7 @@ jobs:
           git config user.email "actions@github.com"
           git add sitemap.xml
           git commit -m "Auto-update sitemap" || echo "No changes"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          git push origin main
          
       - name: Notify Google
         run: curl "http://www.google.com/ping?sitemap=https://yogeshjirel.com.np/sitemap.xml"
