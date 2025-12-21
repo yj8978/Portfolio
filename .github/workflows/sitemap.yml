@@ -55,6 +55,6 @@ jobs:
           git commit -m "Auto-update sitemap" || echo "No changes"
           git push https://$PAT@github.com/${{ github.repository }}.git HEAD:main
 
-      # 4️⃣ Notify Google
+      # 4️⃣ Notify Google .
       - name: Notify Google
         run: curl "http://www.google.com/ping?sitemap=https://yogeshjirel.com.np/sitemap.xml"
