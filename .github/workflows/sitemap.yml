@@ -45,7 +45,7 @@ jobs:
           git config user.email "actions@github.com"
           git add sitemap.xml
           git commit -m "Auto-update sitemap" || echo "No changes"
-          git push origin main
-
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+         
       - name: Notify Google
         run: curl "http://www.google.com/ping?sitemap=https://yogeshjirel.com.np/sitemap.xml"
