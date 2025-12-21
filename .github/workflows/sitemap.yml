@@ -10,42 +10,51 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout the repo
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          persist-credentials: true
           ref: main
 
+      # 2️⃣ Generate sitemap
       - name: Generate sitemap
         run: |
           DOMAIN="https://yogeshjirel.com.np"
           SITEMAP="sitemap.xml"
 
+          # Start XML
           echo '<?xml version="1.0" encoding="UTF-8"?>' > $SITEMAP
           echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> $SITEMAP
 
+          # Add all static HTML pages (ignore sitemap.xml and .github folder)
           find . -name "*.html" ! -name "sitemap.xml" ! -path "./.github/*" | while read FILE; do
-            FILE_URL="${FILE#./}"
-            FILE_URL="${FILE_URL/index.html/}"
+            FILE_URL="${FILE#./}"                 # remove leading ./
+            FILE_URL="${FILE_URL/index.html/}"    # remove index.html
             echo "  <url><loc>$DOMAIN/$FILE_URL</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>" >> $SITEMAP
           done
 
+          # Add blog posts from posts.json (skip drafts)
           if [ -f "posts.json" ]; then
             cat posts.json | jq -r '.[] | select(.draft != true) | .id' | while read ID; do
               echo "  <url><loc>$DOMAIN/blog/$ID/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>" >> $SITEMAP
             done
           fi
 
+          # Close XML
           echo '</urlset>' >> $SITEMAP
           cat $SITEMAP
 
+      # 3️⃣ Commit and push sitemap using PAT
       - name: Commit sitemap
+        env:
+          PAT: ${{ secrets.SC_KEY }}
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add sitemap.xml
           git commit -m "Auto-update sitemap" || echo "No changes"
-          git push origin main
-         
+          git push https://$PAT@github.com/${{ github.repository }}.git HEAD:main
+
+      # 4️⃣ Notify Google
       - name: Notify Google
         run: curl "http://www.google.com/ping?sitemap=https://yogeshjirel.com.np/sitemap.xml"
