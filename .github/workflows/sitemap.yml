@@ -47,7 +47,7 @@ jobs:
       # 3️⃣ Commit and push sitemap using PAT
       - name: Commit sitemap
         env:
-          PAT: ${{ secrets.SC_KEY }}
+          PAT: ${{ secrets.PAT }}
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
@@ -55,6 +55,6 @@ jobs:
           git commit -m "Auto-update sitemap" || echo "No changes"
           git push https://$PAT@github.com/${{ github.repository }}.git HEAD:main
 
-      # 4️⃣ Notify Google .
+      # 4️⃣ Notify Google
       - name: Notify Google
         run: curl "http://www.google.com/ping?sitemap=https://yogeshjirel.com.np/sitemap.xml"
