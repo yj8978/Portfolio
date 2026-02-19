@@ -12,23 +12,7 @@
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="post-nav-container">
-    <a href="https://yogeshjirel.com.np/" class="logo">YJ</a>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="https://yogeshjirel.com.np/blogs">Blogs</a></li>
-      <li><a href="https://yogeshjirel.com.np/#projects">Projects</a></li>
-    </ul>
-  </div>
-</nav>
-
+<div id="header"></div>
 <div class="post-container">
   <h1 class="post-title" id="title"></h1>
   <div class="post-meta" id="meta"></div>
@@ -37,23 +21,8 @@
     Fleeting thoughts of mine . Thanks for reading
   </div>
 </div>
-
+<script src="main.js"></script>
 <script>
-const toggle = document.getElementById("menuToggle");
-const menu = document.getElementById("navMenu");
-
-toggle.addEventListener("click", () => {
-  menu.classList.toggle("show");
-  toggle.classList.toggle("active"); // <-- toggle X animation
-});
-
-// Close menu after click (mobile UX)
-menu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("show");
-    toggle.classList.remove("active"); // <-- reset X
-  });
-});
 // blog
 const params = new URLSearchParams(window.location.search);
 const postId = params.get("id");

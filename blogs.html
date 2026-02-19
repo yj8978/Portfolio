@@ -11,23 +11,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
 </head>
 <body>
-<nav class="navbar">
-  <div class="blog-nav-container">
-    <a href="https://yogeshjirel.com.np/" class="logo">YJ</a>
-
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="https://yogeshjirel.com.np/blogs">Blogs</a></li>
-      <li><a href="https://yogeshjirel.com.np/#projects">Projects</a></li>
-    </ul>
-  </div>
-</nav>
-
+<div id="header"></div>
 <div class="blog-container">
   <h1 class="page-title">Blogs</h1>
   <p class="page-subtitle">
@@ -36,24 +20,8 @@
 
   <div class="blog-list" id="blogList"></div>
 </div>
-
+<script src="main.js"></script>
 <script>
-const toggle = document.getElementById("menuToggle");
-const menu = document.getElementById("navMenu");
-
-toggle.addEventListener("click", () => {
-  menu.classList.toggle("show");
-  toggle.classList.toggle("active"); // <-- toggle X animation
-});
-
-// Close menu after click (mobile UX)
-menu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("show");
-    toggle.classList.remove("active"); // <-- reset X
-  });
-});
-
 fetch("posts.json")
   .then(res => res.json())
   .then(posts => {
