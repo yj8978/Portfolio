@@ -202,25 +202,7 @@
 
   </main>
 </div>
-
-<script>
-const toggle = document.getElementById("menuToggle");
-const menu = document.getElementById("navMenu");
-
-toggle.addEventListener("click", () => {
-  menu.classList.toggle("show");
-  toggle.classList.toggle("active"); // <-- toggle X animation
-});
-
-// Close menu after click (mobile UX)
-menu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    menu.classList.remove("show");
-    toggle.classList.remove("active"); // <-- reset X
-  });
-});
-
-</script>
+<script src="main.js"></script>
 
 </body>
 </html>
