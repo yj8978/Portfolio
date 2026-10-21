@@ -2,45 +2,49 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Blogs</title>
+<title>Blogs — Yogesh Jirel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Essays by Yogesh Jirel on systems, incentives and the optimisation pressures behind everyday life.">
+<meta name="author" content="Yogesh Jirel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d1117">
 <meta name="google-site-verification" content="La6tvcFECCjUCFLIbKxmqchhqEQMH9u2i0bM48Tnq6k" />
+
+<meta property="og:title" content="Blogs — Yogesh Jirel">
+<meta property="og:description" content="Essays on systems, incentives and the optimisation pressures behind everyday life.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yogeshjirel.com.np/blogs.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/119278433?v=4">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://yogeshjirel.com.np/blogs.html">
 <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css">
 </head>
-<body>
+
+<body data-page="blogs">
+<a class="skip-link" href="#main">Skip to content</a>
 <div id="header"></div>
-<div class="blog-container">
+
+<main class="blog-container" id="main">
+  <span class="eyebrow">Writing</span>
   <h1 class="page-title">Blogs</h1>
   <p class="page-subtitle">
-    I overthink so much it felt unfair to keep it to myself. Consider this a shared existential crisis.
+    I overthink so much it felt unfair to keep it to myself. Consider this a
+    shared existential crisis.
   </p>
 
-  <div class="blog-list" id="blogList"></div>
-</div>
-<script src="main.js"></script>
-<script>
-fetch("posts.json")
-  .then(res => res.json())
-  .then(posts => {
-    const list = document.getElementById("blogList");
+  <div class="blog-list" id="blogList">
+    <p class="muted">Loading posts…</p>
+  </div>
+</main>
 
-    posts.forEach(post => {
-      const article = document.createElement("article");
-      article.className = "blog-card";
-      article.innerHTML = `
-        <a href="blog.html?id=${post.id}">
-          <h2>${post.title}</h2>
-          <p>${post.excerpt}</p>
-          <div class="blog-meta">${post.date} · ${post.readTime}</div>
-        </a>
-      `;
-      list.appendChild(article);
-    });
-  });
-</script>
-
+<div id="footer"></div>
+<script type="module" src="/js/main.js"></script>
 </body>
 </html>

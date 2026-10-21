@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Projects — Yogesh Jirel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Selected work by Yogesh Jirel — RAG pipelines, a national financial reporting system, student platforms, WordPress plugins and a Godot strategy game.">
+<meta name="author" content="Yogesh Jirel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d1117">
+<meta name="google-site-verification" content="La6tvcFECCjUCFLIbKxmqchhqEQMH9u2i0bM48Tnq6k" />
+
+<meta property="og:title" content="Projects — Yogesh Jirel">
+<meta property="og:description" content="RAG pipelines, a national financial reporting system, student platforms, WordPress plugins and a Godot strategy game.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yogeshjirel.com.np/projects.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/119278433?v=4">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://yogeshjirel.com.np/projects.html">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body data-page="projects">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="header"></div>
+
+<main class="page shell" id="main">
+
+  <header data-reveal>
+    <span class="eyebrow">Work</span>
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">
+      Things I have designed, built and shipped — from a reporting system used
+      by a national roads authority to a plugin that keeps readers on the page.
+      Filter by category, or open a card for the full story.
+    </p>
+  </header>
+
+  <div class="filters" role="group" aria-label="Filter projects by category" data-reveal>
+    <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="filter-btn" data-filter="ai" aria-pressed="false">AI</button>
+    <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+    <button type="button" class="filter-btn" data-filter="enterprise" aria-pressed="false">Enterprise</button>
+    <button type="button" class="filter-btn" data-filter="plugin" aria-pressed="false">Plugin</button>
+    <button type="button" class="filter-btn" data-filter="game" aria-pressed="false">Game</button>
+  </div>
+
+  <div class="projects projects--page" id="projects" data-reveal-group aria-busy="true">
+
+    <!-- ============ Just-A-RAG ============ -->
+    <article class="project" data-project="just-a-rag" data-categories="ai" data-reveal>
+      <div class="project-top">
+        <h3>Just-A-RAG</h3>
+        <span class="tag tag--purple">AI</span>
+      </div>
+      <p>
+        An early-stage prototype for experimenting with retrieval-augmented
+        generation: document processing, embeddings, vector retrieval and
+        LLM-based answer generation in one pipeline.
+      </p>
+      <div class="project-tech">
+        <span>Python</span><span>Embeddings</span><span>Vector search</span><span>LLM</span>
+      </div>
+      <div class="project-footer">
+        <span class="links muted">In development</span>
+        <button type="button" class="project-open">Details</button>
+      </div>
+
+      <div class="project-detail" hidden>
+        <h2>Just-A-RAG</h2>
+        <p class="modal-role">Personal research project · Python · In development</p>
+        <p>
+          A working prototype built to understand retrieval-augmented
+          generation from the ground up rather than through a framework. Every
+          stage of the pipeline is explicit, so each one can be swapped and
+          measured on its own.
+        </p>
+        <div class="modal-section">
+          <h3>What it does</h3>
+          <ul>
+            <li>Ingests and chunks documents into retrievable passages.</li>
+            <li>Generates embeddings and stores them for vector retrieval.</li>
+            <li>Ranks retrieved context before it reaches the model.</li>
+            <li>Feeds that context into LLM-based generation for grounded answers.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Why it exists</h3>
+          <ul>
+            <li>A foundation for further experimentation with chunking strategies and retrieval quality.</li>
+            <li>A way to reason about where RAG pipelines actually fail — usually retrieval, rarely generation.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Stack</h3>
+          <div class="stack">
+            <span class="tech">Python</span><span class="tech">Embeddings</span>
+            <span class="tech">Vector retrieval</span><span class="tech">LLM APIs</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <a class="btn btn--sm" href="https://github.com/yj8978" rel="noopener">GitHub profile</a>
+          <a class="btn btn--primary btn--sm" href="/meeting.html">Talk about this</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ FMIS ============ -->
+    <article class="project" data-project="fmis-roads-board" data-categories="enterprise web" data-reveal>
+      <div class="project-top">
+        <h3>FMIS — Roads Board Nepal</h3>
+        <span class="tag tag--amber">Enterprise</span>
+      </div>
+      <p>
+        A Financial Management Information System: configurable financial
+        reports, balance-sheet generation and a secure authentication layer,
+        built on Laravel and Oracle.
+      </p>
+      <div class="project-tech">
+        <span>Laravel</span><span>PHP</span><span>Oracle</span><span>Reporting</span>
+      </div>
+      <div class="project-footer">
+        <span class="links muted">Client system · Intellisoft Nepal</span>
+        <button type="button" class="project-open">Details</button>
+      </div>
+
+      <div class="project-detail" hidden>
+        <h2>FMIS — Roads Board Nepal</h2>
+        <p class="modal-role">Intellisoft Nepal Pvt. Ltd. · Mar 2026 – Aug 2026 · Remote</p>
+        <p>
+          A Financial Management Information System used by Roads Board Nepal.
+          I worked across the reporting engine and the security layer that
+          guards it — the kind of system where a wrong number is a much bigger
+          problem than a slow page.
+        </p>
+        <div class="modal-section">
+          <h3>What I built</h3>
+          <ul>
+            <li>A financial reporting system in Laravel/PHP on Oracle, with configurable report structures and balance-sheet generation.</li>
+            <li>A secure authentication and login system for the platform.</li>
+            <li>Database-driven reporting workflows: financial data aggregation and fiscal-year comparisons.</li>
+            <li>Query and reporting-logic optimisation, found by profiling production features under test.</li>
+            <li>Secure backend practices throughout — input validation, access control and defence against common web vulnerabilities.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Stack</h3>
+          <div class="stack">
+            <span class="tech">Laravel</span><span class="tech">PHP</span>
+            <span class="tech">Oracle</span><span class="tech">SQL</span>
+            <span class="tech">Git</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <span class="field-hint">Internal government system — no public link available.</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ MySahapathi ============ -->
+    <article class="project" data-project="mysahapathi" data-categories="web" data-reveal>
+      <div class="project-top">
+        <h3>MySahapathi</h3>
+        <span class="tag tag--green">Live</span>
+      </div>
+      <p>
+        A student-focused digital platform listing scholarships, fellowships
+        and similar opportunities — owned from backend logic through to
+        deployment.
+      </p>
+      <div class="project-tech">
+        <span>PHP</span><span>MySQL</span><span>REST APIs</span><span>Auth</span>
+      </div>
+      <div class="project-footer">
+        <span class="links"><a href="https://mysahapathi.com/" rel="noopener">Visit site</a></span>
+        <button type="button" class="project-open">Details</button>
+      </div>
+
+      <div class="project-detail" hidden>
+        <h2>MySahapathi</h2>
+        <p class="modal-role">Independent project · Live at mysahapathi.com</p>
+        <p>
+          Finding scholarships in Nepal usually means trawling scattered notice
+          boards and Facebook pages. MySahapathi collects those opportunities
+          in one searchable place, so students can see what is open and what is
+          closing.
+        </p>
+        <div class="modal-section">
+          <h3>What I did</h3>
+          <ul>
+            <li>Built and maintained the platform end to end.</li>
+            <li>Integrated third-party APIs and authentication.</li>
+            <li>Owned feature development, backend logic, integrations and deployment.</li>
+            <li>Made the technical calls — schema, hosting and release process.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Stack</h3>
+          <div class="stack">
+            <span class="tech">PHP</span><span class="tech">MySQL</span>
+            <span class="tech">REST APIs</span><span class="tech">Authentication</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <a class="btn btn--primary btn--sm" href="https://mysahapathi.com/" rel="noopener">Open the site</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ Advanced PDF Embed ============ -->
+    <article class="project" data-project="advanced-pdf-embed" data-categories="plugin web" data-reveal>
+      <div class="project-top">
+        <h3>Advanced PDF Embed</h3>
+        <span class="tag tag--accent">Plugin</span>
+      </div>
+      <p>
+        A WordPress plugin that renders PDFs inline with PDF.js, keeping
+        readers on the page instead of bouncing them to a download.
+      </p>
+      <div class="project-tech">
+        <span>PHP</span><span>PDF.js</span><span>WordPress</span><span>JavaScript</span>
+      </div>
+      <div class="project-footer">
+        <span class="links"><a href="https://github.com/yj8978/pdf-plugin" rel="noopener">Source</a></span>
+        <button type="button" class="project-open">Details</button>
+      </div>
+
+      <div class="project-detail" hidden>
+        <h2>Advanced PDF Embed</h2>
+        <p class="modal-role">Open-source WordPress plugin</p>
+        <p>
+          WordPress has no good answer for showing a PDF in a post — the
+          default is a link that dumps the reader into a browser viewer or a
+          download folder. This plugin renders the document in place with
+          PDF.js.
+        </p>
+        <div class="modal-section">
+          <h3>What it does</h3>
+          <ul>
+            <li>Embeds PDFs directly in posts and pages via PDF.js.</li>
+            <li>Keeps readers in the site's layout and styling.</li>
+            <li>Ships as a self-contained plugin — install and use, no build step.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Stack</h3>
+          <div class="stack">
+            <span class="tech">PHP</span><span class="tech">WordPress API</span>
+            <span class="tech">PDF.js</span><span class="tech">JavaScript</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <a class="btn btn--primary btn--sm" href="https://github.com/yj8978/pdf-plugin" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ P(Doom) ============ -->
+    <article class="project" data-project="pdoom" data-categories="game" data-reveal>
+      <div class="project-top">
+        <h3>P(Doom)</h3>
+        <span class="tag tag--green">Live</span>
+      </div>
+      <p>
+        A turn-based strategy game built in Godot, where every turn is a bet on
+        how the next one plays out.
+      </p>
+      <div class="project-tech">
+        <span>Godot</span><span>GDScript</span><span>Game design</span>
+      </div>
+      <div class="project-footer">
+        <span class="links"><a href="https://pdoom1.com/" rel="noopener">Play</a></span>
+        <button type="button" class="project-open">Details</button>
+      </div>
+
+      <div class="project-detail" hidden>
+        <h2>P(Doom)</h2>
+        <p class="modal-role">Turn-based strategy game · Built with Godot</p>
+        <p>
+          A turn-based strategy game built in the Godot engine — a change of
+          pace from backend work, and a useful exercise in state machines,
+          balance and giving players feedback they can actually read.
+        </p>
+        <div class="modal-section">
+          <h3>Highlights</h3>
+          <ul>
+            <li>Turn-based loop with state handled in GDScript.</li>
+            <li>Built and exported with Godot's own tooling.</li>
+            <li>Published and playable on the web.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Stack</h3>
+          <div class="stack">
+            <span class="tech">Godot</span><span class="tech">GDScript</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <a class="btn btn--primary btn--sm" href="https://pdoom1.com/" rel="noopener">Play the game</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- ============ This site ============ -->
+    <article class="project" data-project="portfolio" data-categories="web" data-reveal>
+      <div class="project-top">
+        <h3>yogeshjirel.com.np</h3>
+        <span class="tag tag--accent">Web</span>
+      </div>
+      <p>
+        This site: a dependency-free portfolio and blog in plain HTML, CSS and
+        ES modules, deployed straight from a repository.
+      </p>
+      <div class="project-tech">
+        <span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Actions</span>
+      </div>
+      <div class="project-footer">
+        <span class="links"><a href="https://github.com/yj8978/Portfolio" rel="noopener">Source</a></span>
+        <button type="button" class="project-open">Details</button>
+      </div>
+
+      <div class="project-detail" hidden>
+        <h2>yogeshjirel.com.np</h2>
+        <p class="modal-role">Personal site · No framework, no build step</p>
+        <p>
+          A portfolio that stays fast because there is almost nothing to load:
+          hand-written HTML, three layered stylesheets and a handful of ES
+          modules. No bundler, no framework, no runtime dependencies.
+        </p>
+        <div class="modal-section">
+          <h3>How it works</h3>
+          <ul>
+            <li>Components are ES modules — header, footer, filters, modals, scheduler — wired up by one entry point.</li>
+            <li>Content is authored as static HTML so crawlers and no-JS visitors see everything.</li>
+            <li>Scroll-reveal motion through IntersectionObserver, disabled under <code>prefers-reduced-motion</code>.</li>
+            <li>A GitHub Action regenerates the sitemap on every push to <code>main</code>.</li>
+            <li>The blog renders from a single <code>posts.json</code> file.</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>Stack</h3>
+          <div class="stack">
+            <span class="tech">HTML</span><span class="tech">CSS</span>
+            <span class="tech">JavaScript (ESM)</span><span class="tech">GitHub Pages</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <a class="btn btn--primary btn--sm" href="https://github.com/yj8978/Portfolio" rel="noopener">View the source</a>
+        </div>
+      </div>
+    </article>
+
+  </div>
+
+  <p class="projects-empty" id="projectsEmpty" hidden>
+    Nothing in that category yet. Try another filter.
+  </p>
+
+  <section class="card card--pad-lg" style="margin-top:32px" data-reveal>
+    <span class="eyebrow">Next step</span>
+    <h2 style="font-size:22px">Want one of these, but for your problem?</h2>
+    <p class="lead" style="margin-bottom:18px">
+      Book a slot and walk me through it — I will tell you honestly whether I
+      am the right person for it.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn--primary" href="/meeting.html">Schedule a meeting</a>
+      <a class="btn btn--ghost" href="mailto:jirelyogesh@gmail.com">Send an email</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Project detail modal -->
+<div class="modal" id="projectModal" role="dialog" aria-modal="true"
+     aria-label="Project details" aria-hidden="true">
+  <button class="modal-backdrop" type="button" tabindex="-1" aria-label="Close dialog"></button>
+  <div class="modal-dialog" role="document">
+    <button class="modal-close" type="button" aria-label="Close">&times;</button>
+    <div id="projectModalBody"></div>
+  </div>
+</div>
+
+<div id="footer"></div>
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>
