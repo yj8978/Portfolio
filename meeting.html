@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Book a Meeting — Yogesh Jirel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Schedule a call with Yogesh Jirel — a 30-minute intro, a 45-minute project scoping session or a 60-minute technical deep dive. Kathmandu time, converted to yours.">
+<meta name="author" content="Yogesh Jirel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d1117">
+<meta name="google-site-verification" content="La6tvcFECCjUCFLIbKxmqchhqEQMH9u2i0bM48Tnq6k" />
+
+<meta property="og:title" content="Book a Meeting — Yogesh Jirel">
+<meta property="og:description" content="Pick a slot for an intro call, a scoping session or a technical deep dive.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yogeshjirel.com.np/meeting.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/119278433?v=4">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://yogeshjirel.com.np/meeting.html">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css">
+</head>
+
+<body data-page="meeting">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="header"></div>
+
+<main class="page shell" id="main">
+  <div id="meetingPage">
+
+    <header data-reveal>
+      <span class="eyebrow">Let's talk</span>
+      <h1 class="page-title">Book a meeting</h1>
+      <p class="page-subtitle">
+        Choose the kind of conversation you need, propose a time that works for
+        you, and I will confirm within one working day. Times are shown in your
+        own timezone and in Kathmandu, so nobody has to do the arithmetic.
+      </p>
+    </header>
+
+    <!-- Meeting types -->
+    <section aria-labelledby="types-heading" data-reveal>
+      <h2 id="types-heading" class="sr-only">Meeting types</h2>
+      <div class="meet-types" id="meetingTypes" data-reveal-group role="group"
+           aria-label="Choose a meeting type"></div>
+    </section>
+
+    <div class="meet-layout">
+
+      <!-- ============ Booking column ============ -->
+      <div>
+        <!-- Rendered when a calendar provider is connected in js/config.js -->
+        <div class="scheduler-embed" id="schedulerEmbed" hidden></div>
+
+        <!-- Built-in request flow (used when no provider is connected) -->
+        <section class="card card--pad-lg booking-fallback" id="bookingFallback" data-reveal>
+          <h2>Propose a time</h2>
+          <p class="muted" style="font-size:14px; margin-bottom:20px">
+            Fill this in and I will get an email with everything I need. You
+            also get a calendar invite (.ics) for the slot you picked, so it is
+            already in your calendar while you wait on my confirmation.
+          </p>
+
+          <form id="bookingForm" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="guestName">Your name</label>
+                <input type="text" id="guestName" name="name" required
+                       autocomplete="name" placeholder="Ada Lovelace">
+              </div>
+
+              <div class="field">
+                <label for="guestEmail">Email</label>
+                <input type="email" id="guestEmail" name="email" required
+                       autocomplete="email" placeholder="you@company.com">
+              </div>
+
+              <div class="field">
+                <label for="guestCompany">Company <span class="muted">(optional)</span></label>
+                <input type="text" id="guestCompany" name="company"
+                       autocomplete="organization" placeholder="Where you work">
+              </div>
+
+              <div class="field">
+                <label for="meetingType">Meeting type</label>
+                <select id="meetingType" name="meetingType"></select>
+              </div>
+
+              <div class="field">
+                <label for="meetingDate">Preferred date</label>
+                <input type="date" id="meetingDate" name="date" required>
+              </div>
+
+              <div class="field">
+                <label for="meetingTime">Preferred start time</label>
+                <input type="time" id="meetingTime" name="time" required step="900">
+                <span class="field-hint">In your own timezone.</span>
+              </div>
+
+              <div class="field field--full">
+                <label for="guestNotes">What would you like to cover?</label>
+                <textarea id="guestNotes" name="notes"
+                          placeholder="A sentence or two about the project, the role, or the problem."></textarea>
+              </div>
+
+              <div class="field field--full">
+                <p class="form-status" id="slotPreview">
+                  Pick a date and time and I will show it in both timezones.
+                </p>
+              </div>
+            </div>
+
+            <div class="btn-row" style="margin-top:18px">
+              <button type="submit" class="btn btn--primary">Send request</button>
+              <button type="button" class="btn btn--ghost" id="downloadIcs">
+                Download .ics invite
+              </button>
+            </div>
+
+            <p class="form-status" id="bookingStatus" role="status" aria-live="polite"
+               style="margin-top:16px">
+              Nothing sent yet.
+            </p>
+          </form>
+        </section>
+      </div>
+
+      <!-- ============ Aside ============ -->
+      <aside class="meet-aside">
+
+        <section class="card availability" data-reveal>
+          <h2>Availability</h2>
+          <ul id="availabilityList"></ul>
+          <p class="local-time" style="margin-top:14px">
+            All hours are Kathmandu time, <strong>NPT (UTC+5:45)</strong>.
+          </p>
+          <p class="local-time" style="margin-top:6px">
+            Your timezone: <span id="visitorZone">detecting…</span>
+          </p>
+        </section>
+
+        <section class="card" data-reveal>
+          <h2>What to expect</h2>
+          <ul class="checklist">
+            <li>A reply confirming or proposing a nearby slot within one working day.</li>
+            <li>A video link in the confirmation — Meet, Zoom or whatever you prefer.</li>
+            <li>A straight answer on fit, scope and timeline. No pitch deck.</li>
+          </ul>
+        </section>
+
+        <section class="card" data-reveal>
+          <h2>Prefer something else?</h2>
+          <div class="btn-row">
+            <a class="btn btn--sm btn--block" href="mailto:jirelyogesh@gmail.com">Email me directly</a>
+            <a class="btn btn--sm btn--block"
+               href="https://www.linkedin.com/in/yogesh-jirel-8b9871259" rel="noopener">Message on LinkedIn</a>
+            <a class="btn btn--sm btn--block" href="/resources/yogesh_jirel_resume.pdf">Read my résumé first</a>
+          </div>
+        </section>
+
+      </aside>
+    </div>
+
+  </div>
+</main>
+
+<div id="footer"></div>
+<script type="module" src="/js/main.js"></script>
+</body>
+</html>

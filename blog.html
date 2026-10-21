@@ -2,45 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Blog Post</title>
+<title>Blog Post — Yogesh Jirel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="An essay by Yogesh Jirel.">
+<meta name="author" content="Yogesh Jirel">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0d1117">
 <meta name="google-site-verification" content="La6tvcFECCjUCFLIbKxmqchhqEQMH9u2i0bM48Tnq6k" />
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/119278433?v=4">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/style.css">
 </head>
-<body>
 
+<body data-page="blog">
+<a class="skip-link" href="#main">Skip to content</a>
 <div id="header"></div>
-<div class="post-container">
-  <h1 class="post-title" id="title"></h1>
-  <div class="post-meta" id="meta"></div>
-  <article class="post-content" id="content"></article>
+
+<main class="post-container" id="main">
+  <article>
+    <h1 class="post-title" id="title">Loading…</h1>
+    <div class="post-meta" id="meta"></div>
+    <div class="post-content" id="content"></div>
+  </article>
+
   <div class="post-footer">
-    Fleeting thoughts of mine . Thanks for reading
+    <span>Fleeting thoughts of mine. Thanks for reading.</span>
+    <a href="/blogs.html">← All posts</a>
   </div>
-</div>
-<script src="main.js"></script>
-<script>
-// blog
-const params = new URLSearchParams(window.location.search);
-const postId = params.get("id");
+</main>
 
-fetch("posts.json")
-  .then(res => res.json())
-  .then(posts => {
-    const post = posts.find(p => p.id === postId);
-    if (!post) {
-      document.getElementById("title").innerText = "Post Not Found";
-      return;
-    }
-
-    document.getElementById("title").innerText = post.title;
-    document.getElementById("meta").innerText = `${post.date} · ${post.readTime}`;
-    document.getElementById("content").innerHTML = post.content;
-  });
-</script>
-
+<div id="footer"></div>
+<script type="module" src="/js/main.js"></script>
 </body>
 </html>
